@@ -1,0 +1,39 @@
+user = {
+	id: object_id,
+	email_id: String,
+	password: String,
+	user_name: String,
+	joined: Date,
+}
+
+post = {
+	user: object_id,
+	content: String,
+	date_time: Date,
+	upvotes: Number,
+	tags: [
+		array of String
+	],
+	comments: [
+		array of object_id of comment objects
+	],
+}
+
+comment = {
+	text: String,
+	user: object_id,
+	date_time: Date,
+	subcomments: [
+		array of object_id of comment objects
+	]
+}
+
+
+
+-------
+
+Relationships
+user-posts(1 to N)
+post-comments(1 to N)
+
+
