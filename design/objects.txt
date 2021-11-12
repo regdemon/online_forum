@@ -1,16 +1,19 @@
 user = {
-	id: object_id,
-	email_id: String,
-	password: String,
-	user_name: String,
+	user_id: object_id,
+	email_id: String, //let's keep email as a username as well
+	password: String,	
 	joined: Date,
+	total_score: Number // think of it as a stackoverflow where user earns 5 points for each post getting upvote and -2 for each point getting downvote
 }
 
 post = {
-	user: object_id,
+	post_id: object_id,
+	post_owner_id: user_id,
 	content: String,
-	date_time: Date,
-	upvotes: Number,
+	create_date: Date,
+	update_date: datetime,
+	upvote_count: Number,
+	downvote_count: number,
 	tags: [
 		array of String
 	],
@@ -20,9 +23,11 @@ post = {
 }
 
 comment = {
-	text: String,
+	comment_msg: String,
 	user: object_id,
 	date_time: Date,
+	moderation_Status: int/string. -- if comment_msg contains offensive word or has been marked as inappropriate, hide it. status could be - under review, blacklisted, whitelisted etc
+	status: tinyint -- active/inactive
 	subcomments: [
 		array of object_id of comment objects
 	]
