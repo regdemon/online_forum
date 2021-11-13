@@ -42,13 +42,26 @@ app.get("/createUser",(req, res)=>{
 });
 
 app.get("/findUser",async (req,res)=>{
-    let user = await userCrud.getbyId(mongoose.Types.ObjectId('618ec3cd4b5d6022b0fc13bd'));
+    let user = await userCrud.getById(mongoose.Types.ObjectId('618ec3cd4b5d6022b0fc13bd'));
     if(!user)res.send("No user found")
     else res.send(user)
 });
 
+app.get("/updateUser",(req,res)=>{
+    userCrud.updateById(
+        mongoose.Types.ObjectId('618ec3cd4b5d6022b0fc13be'), 
+        {email_id: 'raghavgoyal@hotmail.com',  total_score: 10}
+    );
+    res.send("Updation")
+});
 
 
+app.get("/deleteUser",(req,res)=>{
+    userCrud.deleteById(
+        mongoose.Types.ObjectId("618ec3cd4b5d6022b0fc13bd"), 
+    );
+    res.send("Deletion")
+});
 
 
 

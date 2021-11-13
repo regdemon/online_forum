@@ -10,12 +10,28 @@ function getUserbyId(id){
     return promise;
 }
 
-function updateUser(){
-
+function updateUserById(id, update){
+    User.findByIdAndUpdate(id, update, function (err, doc){
+        if (err){
+            console.log("Error", err);
+        }
+        else{
+            if(doc === null)console.log("no user found");
+            else console.log("update successful");
+        }
+    })
 }
 
-function deleteUser(){
-
+function deleteUserById(id){
+    User.findByIdAndRemove(id, function (err, doc){
+        if (err){
+            console.log("Error", err);
+        }
+        else{
+            if(doc === null)console.log("no user found");
+            else console.log("deletion successful");
+        }
+    })
 }
 
 async function deleteAllUsers(){
@@ -24,6 +40,8 @@ async function deleteAllUsers(){
 
 module.exports = {
     create: createUser, 
-    getbyId: getUserbyId,
+    getById: getUserbyId,
+    updateById: updateUserById,
+    deleteById: deleteUserById,
     deleteAll: deleteAllUsers,
 }
