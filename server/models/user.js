@@ -5,7 +5,6 @@ const userSchema = new Schema({
 	email_id: String,
     name: String,
     password: String,
-	joined: Date,
     total_score: Number
 }, {timestamps: true});
 

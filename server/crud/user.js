@@ -1,8 +1,8 @@
 const User = require("../models/user");
 
-async function createUser(user){
-    const newUser = new User(user);
-    await User.insertMany(newUser);
+async function createUser(users){
+    //const newUser = new User(user);
+    await User.insertMany(users);
 }   
 
 function getUserbyId(id){
