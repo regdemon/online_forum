@@ -24,4 +24,5 @@ const user_list = [
     {email_id: "raides@hotmail.com", name: "Ramon Robbie", password: "7tEqzW#$TLk.w>u>"},
 ]
 
+
 module.exports = user_list;

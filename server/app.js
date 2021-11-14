@@ -2,28 +2,34 @@ const express = require("express");
 const app = express();
 const path = require("path")
 const mongoose = require("mongoose")
+const morgan = require("morgan")
+const ejsMate = require("ejs-mate")
 
 const userCrud = require("./crud/user")
 
 mongoose.connect("mongodb://localhost:27017/forumdb")
     .then(()=>{
-        console.log("Connected");
+        console.log("Databse connected on port 27017");
     })
     .catch((e)=>{
-        console.log("Error",e)
+        console.log("Database connection error: ",e)
     });
 
-mongoose.connection.on('error', err => {
-    console.log(err);
+mongoose.connection.on('error', e => {
+    console.log("Database connection error: ",e)
 });
 
+app.set("ejs", "ejsMate")
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname,"views"))
 
 
-app.listen(3000, () => {
-    console.log("Serving on port 3000");
-});
+app.use(morgan('common'))
+
+app.use((req, res, next)=>{
+    console.log(req.query)
+    next();
+})
 
 app.get("/",(req, res)=>{
     res.send("Home Page")
@@ -63,21 +69,12 @@ app.get("/deleteUser",(req,res)=>{
     res.send("Deletion")
 });
 
+app.use((req, res, next)=>{
+    res.status(404).send("Not Found")
+})  
 
+app.listen(3000, () => {
+    console.log('App is running on localhost:3000')
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-// app.get("/", (req, res) => {
-//     res.render("home");
-// });
 

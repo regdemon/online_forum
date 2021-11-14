@@ -1,8 +1,8 @@
-const Comment = require("../models/Comment");
+const Comment = require("../models/comment");
 
-async function createComment(Comment){
+async function createComment(comments){
     //const newComment = new Comment(Comment);
-    await Comment.insertMany(Comments);
+    await Comment.insertMany(comments);
 }   
 
 function getCommentbyId(id){

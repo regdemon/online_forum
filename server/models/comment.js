@@ -1,3 +1,6 @@
+//ToDo
+//adding subcomments
+
 const mongoose = require("mongoose")
 const {Schema, model} = mongoose
 
@@ -7,12 +10,11 @@ const commentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    password: String,
-	moderation_status: String,
+	moderation_status: String, //under-review, blacklisted, whitelisted
 	status: Boolean
 }, {timestamps: true});
 
-const Comment = model("User", commentSchema);
+const Comment = model("Comment", commentSchema);
 
 module.exports = Comment;
 

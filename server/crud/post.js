@@ -1,8 +1,8 @@
 const Post = require("../models/post");
 
-async function createPost(post){
+async function createPost(posts){
     //const newPost = new Post(Post);
-    await Post.insertMany(Posts);
+    await Post.insertMany(posts);
 }   
 
 function getPostbyId(id){
