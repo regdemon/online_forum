@@ -4,77 +4,68 @@ const path = require("path")
 const mongoose = require("mongoose")
 const morgan = require("morgan")
 const ejsMate = require("ejs-mate")
+const AppError = require("./AppError")
 
 const userCrud = require("./crud/user")
 
+
+
+app.engine("ejs", ejsMate)
+app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "views"))
+
+
+
 mongoose.connect("mongodb://localhost:27017/forumdb")
-    .then(()=>{
+    .then(() => {
         console.log("Databse connected on port 27017");
     })
-    .catch((e)=>{
-        console.log("Database connection error: ",e)
+    .catch((e) => {
+        console.log("Database connection error: ", e)
     });
 
 mongoose.connection.on('error', e => {
-    console.log("Database connection error: ",e)
+    console.log("Database connection error: ", e)
 });
 
-app.set("ejs", "ejsMate")
-app.set("view engine", "ejs")
-app.set("views", path.join(__dirname,"views"))
+
+app.use(morgan('tiny'))
 
 
-app.use(morgan('common'))
-
-app.use((req, res, next)=>{
-    console.log(req.query)
-    next();
+app.get("/", (req, res) => {
+    res.render("home.ejs")
 })
 
-app.get("/",(req, res)=>{
-    res.send("Home Page")
-});
+
+const verifyPassword = (req, res, next) => {
+    const { password } = req.query;
+    if (password === 'chickennugget') {
+        next();
+    }
+    throw new AppError('password required', 401);
+}
 
 
-//User Functionality
-app.get("/createUser",(req, res)=>{
-    userCrud.create({
-        email_id: "raghav123@gmail.com",
-        name: "Raghav Goyal",
-        password: "abcdef@$#",
-        total_score: 0
-    });
-    res.send("added user");
-});
+app.get('/secret', verifyPassword, (req, res) => {
+    res.send('MY SECRET IS: Sometimes I wear headphones in public so I dont have to talk to anyone')
+})
 
-app.get("/findUser",async (req,res)=>{
-    let user = await userCrud.getById(mongoose.Types.ObjectId('618ec3cd4b5d6022b0fc13bd'));
-    if(!user)res.send("No user found")
-    else res.send(user)
-});
+app.get("/error",(req,res,next)=>{
+    person.speak()
+})
 
-app.get("/updateUser",(req,res)=>{
-    userCrud.updateById(
-        mongoose.Types.ObjectId('618ec3cd4b5d6022b0fc13be'), 
-        {email_id: 'raghavgoyal@hotmail.com',  total_score: 10}
-    );
-    res.send("Updation")
-});
+app.use((req, res, next) => {
+    res.send("not found 404")
+})
+
+app.use((err, req, res, next) => {
+    const {status = 500, message="Something went wrong"} = err
+    res.status(status).send(message)
+})
 
 
-app.get("/deleteUser",(req,res)=>{
-    userCrud.deleteById(
-        mongoose.Types.ObjectId("618ec3cd4b5d6022b0fc13bd"), 
-    );
-    res.send("Deletion")
-});
-
-app.use((req, res, next)=>{
-    res.status(404).send("Not Found")
-})  
-
-app.listen(3000, () => {
-    console.log('App is running on localhost:3000')
+app.listen(3001, () => {
+    console.log('App is running on localhost:3001')
 })
 
 

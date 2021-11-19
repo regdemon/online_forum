@@ -1,0 +1,7 @@
+.search-box-studento:focus{
+    outline: none;
+}
+
+.my-dropdown::after{
+    display:none;
+}

@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+.studento-bg{
+    background-color: #a5d8ed;
+    height: 15rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.studento-bg-img{
+    position: absolute;
+    left: 75%;
+    height: 15rem; 
+    width: 20rem; 
+}
+
+.text-enclose{
+    margin-top: 5rem;
+    font-size: 2rem;
+}
+
+.my-brand-name{
+    font-weight: 900;
+    font-size: 4rem;
+}
+
+.my-brand-desc{ 
+    font-size: 3rem;
+}

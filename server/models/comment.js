@@ -11,7 +11,7 @@ const commentSchema = new Schema({
         ref: "User"
     },
 	moderation_status: String, //under-review, blacklisted, whitelisted
-	status: Boolean
+	status: Boolean //active,inactive
 }, {timestamps: true});
 
 const Comment = model("Comment", commentSchema);
