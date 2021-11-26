@@ -1,4 +1,0 @@
-frontend: 
-    - reactjs
-    - [ejs, vanilla js] (considering due to familiarity)
-backend: nodejs, mongodb, express, mongoose
