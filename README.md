@@ -1,54 +1,45 @@
 <p align="center">
-  <img height="300px"src="docs/hero.png" />
+  <img height="300px"src="assets/banner.png" />
 </p>
 <hr />
 
-> ## Documentation
-- Complete info about project and user guide can be found in this [doc](https://github.com/akshatgarg12/Microsoft-engage-project/blob/main/docs/doc.pdf) 
-- [User guide and documentation](https://docs.google.com/document/d/10dPu8eNqgqIco803z9e7D7Gf9fN4D9HgAuBp5E7uplg/edit?usp=sharing)
-- [Demo video](https://youtu.be/phvBMyWoxxk)
+> ## Deployment
+- Application deployed at: [Application](https://studento.netlify.app/)
+
+> ## Demo Video
+- [Demo video]()
 
 > ## Tech Stack 
-- ReactJS with typescript for frontend and Fluent UI as a component library 
-- NodeJS express in typescript at backend.
-- The core video calling functionality is handled by WebRtc with a wrapper library simple-peer  
-- signalling using socket.io
+- ReactJS with Redux: Frontend
+- Material UI: Frontend styling and components
+- Node.js, Express.js: Backend
+- MongoDB: Database
 
 > ## Features
-1. Group Video Calling functionality using mesh network.
-2. User Authentication 
-3. Create / Delete Teams and add members to it.
-4. Team Group Chat 
-5. Video Call Functions : 
-  - Media Stream Controls : Turn on/off video and audio
-  - Invite a user : input email and click on bell to send a notification to the user with a join meeting button
-  - Share meeting link button to copy the meeting link
-  - Meeting ChatBox : Chatting feature for ongoing meeting [persistent]
+1. User authentication using Google credentials or email_id-password 
+2. Pagination
+4. Create/Edit/Delete Post
+5. Like/Comment on Post
+6. Search posts by title/tags
+7. Recommended posts
 
 > ## Local Setup
 - client
 ```sh
    cd client
    npm install 
+   Replace base url in line 3 of ./src/api/index.js with 'http://localhost:5000/'
    npm start
 ```
-or 
-install the dependencies and use the shell script from the root
-```sh
-   sh run_frontend.sh
-```
+
 - server
 ```sh
    cd server
    npm install 
-   npm run dev
+   npm start
 ```
-or 
-install the dependencies and use the shell script from the root
-```sh
-   sh run_server.sh
-```
+
 > ## Deployment
-- Frontend is deployed to vercel 
+- Frontend is deployed to Netlify
 - Server is deployed to Heroku
 - MongoDb is deployed to MongoAtlas
