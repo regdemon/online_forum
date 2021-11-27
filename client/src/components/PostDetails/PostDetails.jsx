@@ -37,7 +37,9 @@ const Post = () => {
     );
   }
 
-  const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
+  const recommendedPosts = posts.filter(({ _id }) => _id !== post._id).slice(0,5);
+
+  // console.log(post.message)
 
   return (
     <Paper style={{ padding: '20px', borderRadius: '15px' }} elevation={6}>
@@ -45,12 +47,12 @@ const Post = () => {
         <div className={classes.section}>
           <Typography variant="h3" component="h2">{post.title}</Typography>
           <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{post.tags.map((tag) => `#${tag} `)}</Typography>
-          <Typography gutterBottom variant="body1" component="p">{post.message}</Typography>
+          <Typography style={{whiteSpace: "pre-wrap"}} gutterBottom variant="body1" component="p">{post.message}</Typography>
           <Typography variant="h6">Created by: {post.name}</Typography>
           <Typography variant="body1">{moment(post.createdAt).fromNow()}</Typography>
           <Divider style={{ margin: '20px 0' }} />
-          <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
-          <Divider style={{ margin: '20px 0' }} />
+          {/* <Typography variant="body1"><strong>Realtime Chat - coming soon!</strong></Typography>
+          <Divider style={{ margin: '20px 0' }} /> */}
           <CommentSection post={post} />
           <Divider style={{ margin: '20px 0' }} />
         </div>
@@ -64,12 +66,12 @@ const Post = () => {
           <Divider />
           <div className={classes.recommendedPosts}>
             {recommendedPosts.map(({ title, name, message, likes, selectedFile, _id }) => (
-              <div style={{ margin: '20px', cursor: 'pointer' }} onClick={() => openPost(_id)} key={_id}>
+              <div style={{ margin: '10px 20px 0px 20px', cursor: 'pointer' }} onClick={() => openPost(_id)} key={_id}>
                 <Typography gutterBottom variant="h6">{title}</Typography>
                 <Typography gutterBottom variant="subtitle2">{name}</Typography>
                 <Typography gutterBottom variant="subtitle2">{message}</Typography>
                 <Typography gutterBottom variant="subtitle1">Likes: {likes.length}</Typography>
-                <img src={selectedFile} width="200px" />
+                <img src={selectedFile} style={{width: "200px", maxHeight: "300px"}}/>
               </div>
             ))}
           </div>
