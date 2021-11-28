@@ -3,8 +3,9 @@
 </p>
 <hr />
 
-> ## Deployment
-- Application deployed at: [Application](https://studento.netlify.app/)
+> ## Application URL 
+- Access application at: [https://studento.netlify.app/](https://studento.netlify.app/)
+
 
 > ## Demo Video
 - [Demo video]()
