@@ -42,4 +42,4 @@
 > ## Deployment
 - Frontend is deployed to Netlify
 - Server is deployed to Heroku
-- MongoDb is deployed to MongoAtlas
+- MongoDB is deployed to MongoAtlas
