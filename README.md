@@ -8,7 +8,7 @@
 
 
 > ## Demo Video
-- [Demo video]()
+- [Demo video](https://youtu.be/4owvlEg2gQk)
 
 > ## Tech Stack 
 - ReactJS with Redux: Frontend
