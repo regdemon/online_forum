@@ -44,3 +44,8 @@
 - Frontend is deployed to Netlify
 - Server is deployed to Heroku
 - MongoDB is deployed to MongoAtlas
+
+
+> ## Some sample valid email_id-password for application
+- adityar12@gmail.com, adit1
+- ajays@gmail.com, ajay1
